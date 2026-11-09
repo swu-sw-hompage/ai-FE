@@ -44,6 +44,7 @@ VITE_USE_MOCK=true npm run dev
 
 ## 남은 일
 
-- GitHub 저장소 생성 (`swu-sw-hompage` 조직, 이름 미정)과 새 Vercel 프로젝트로 미리보기 배포. 둘 다 사용자 확인 후 진행한다.
+- 저장소: `swu-sw-hompage/ai-FE` (비공개, 기본 브랜치 `main`, 작업은 `develop`). 조직·기존 레포 이름은 바꾸지 않기로 했고, 나중에 조직을 나누면 Transfer repository로 옮긴다.
+- 새 Vercel 프로젝트로 미리보기 배포. 사용자 확인 후 진행한다.
 - 백엔드 복제 시: 소학회 분류 추가(`clubNotice`, `/notices`의 `club` 파라미터, 프론트는 이미 사용 중), 공지 작성 화면에 소학회 추가, 관리자 화면의 졸업작품·행사·알림 구독 메뉴와 `src/constants/activities.js` 정리.
 - 운영 준비 시: 새 저장소는 이력 없이 시작하고, 배포 대상과 비밀값(JWT_SECRET, STATS_ACCESS_KEY, 관리자·DB 비밀번호)은 전부 새로 만든다. 도메인 A 레코드와 학과 메일 계정은 학교에 요청한다.
