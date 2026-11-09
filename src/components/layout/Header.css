@@ -1,0 +1,384 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  max-width: var(--header-width);
+  margin-inline: auto;
+  padding-inline: var(--header-padding);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding-block: 16px;
+}
+
+@media (max-width: 640px) {
+  .header__inner {
+    padding-inline: 20px;
+  }
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.header__logo-full {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* 학과명이 로고 오른쪽으로 빠지면서 가로가 길어져, 태블릿 폭에서 메뉴가 줄바꿈되지 않도록 축소 */
+@media (max-width: 1120px) {
+  .header__logo-full {
+    height: 40px;
+  }
+}
+
+/* 로고 SVG에는 학교 이름까지만 있고, 전공명은 글자로 붙인다. */
+.header__logo-major {
+  margin-left: 12px;
+  font-family: var(--font-pretendard);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: #9f3a35;
+}
+
+@media (max-width: 480px) {
+  .header__logo-major {
+    margin-left: 8px;
+    font-size: 15px;
+  }
+}
+
+.header__nav {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.header__link {
+  position: relative;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 18px;
+  font-family: var(--font-pretendard);
+  padding: 12px 4px;
+  white-space: nowrap;
+}
+
+.header__link--active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.header__link--hovered {
+  color: var(--color-primary);
+}
+
+/* Desktop hover mega menu */
+.header__mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: #fff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.header__mega--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__mega-inner {
+  display: flex;
+  max-width: var(--container-width);
+  margin-inline: auto;
+}
+
+.header__mega-intro {
+  /* 1320px보다 좁은 화면에선 소개·메뉴 열이 함께 줄어든다.
+     (고정 폭이면 숨겨진 상태에서도 페이지 폭을 1320px로 밀어 가로 스크롤·푸터 어긋남이 생겼음) */
+  flex: 0 1 320px;
+  min-width: 0;
+  padding: 48px clamp(20px, 2.5vw, 32px);
+  background: var(--color-bg-soft);
+}
+
+.header__mega-eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+.header__mega-title {
+  margin: 0;
+  font-family: var(--font-pretendard);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.header__mega-column {
+  flex: 0 1 200px;
+  min-width: 0;
+  padding: 40px clamp(14px, 2vw, 28px) 32px;
+  border-left: 1px solid var(--color-border);
+}
+
+.header__mega-column:first-of-type {
+  border-left: none;
+}
+
+.header__mega-column-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding-bottom: 11px;
+  font-family: var(--font-pretendard);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.header__mega-column-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.header__mega-column--active .header__mega-column-title {
+  color: var(--color-primary);
+}
+
+.header__mega-column--active .header__mega-column-title::after {
+  background: var(--color-primary);
+}
+
+.header__mega-column ul {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header__mega-column a {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.header__mega-column a:hover {
+  color: var(--color-primary);
+}
+
+.header__menu-btn {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .header__inner {
+    min-height: auto;
+    padding-block: 12px;
+  }
+
+  .header__logo-full {
+    height: 40px;
+  }
+
+  .header__mega {
+    display: none !important;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header__menu-btn span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .header__menu-btn--open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header__menu-btn--open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .header__menu-btn--open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+.header__mobile-menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* 헤더 아래 남은 화면을 꽉 채워서 뒤 페이지가 비쳐 보이지 않게 한다 */
+  .header__mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: calc(100dvh - 100%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    padding: 4px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.header__mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__mobile-menu-group {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__mobile-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 56px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-pretendard);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text);
+  text-align: left;
+  text-decoration: none;
+}
+
+.header__mobile-menu-head--current,
+.header__mobile-menu-group--open .header__mobile-menu-head {
+  color: var(--color-primary);
+}
+
+.header__mobile-menu-chevron {
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.header__mobile-menu-group--open .header__mobile-menu-chevron {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+/* 높이 auto까지 부드럽게 펼치기: grid 0fr → 1fr */
+.header__mobile-menu-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s ease;
+}
+
+.header__mobile-menu-group--open .header__mobile-menu-panel {
+  grid-template-rows: 1fr;
+}
+
+.header__mobile-menu-panel > ul {
+  min-height: 0;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__mobile-menu-group--open .header__mobile-menu-panel > ul {
+  padding-bottom: 12px;
+}
+
+.header__mobile-menu-panel a {
+  display: block;
+  padding: 10px 0 10px 12px;
+  font-family: var(--font-pretendard);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.header__mobile-menu-panel a.header__mobile-menu-link--active {
+  font-weight: 600;
+  color: var(--color-primary);
+  box-shadow: inset 2px 0 0 var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__mobile-menu-panel,
+  .header__mobile-menu-chevron {
+    transition: none;
+  }
+}
+
+/* 소형 모바일: 로고 + 햄버거 버튼 한 줄 유지 */
+@media (max-width: 480px) {
+  .header__logo-full {
+    height: 32px;
+  }
+}

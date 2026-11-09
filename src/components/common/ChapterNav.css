@@ -1,0 +1,113 @@
+.chapter-nav {
+  position: sticky;
+  top: 140px;
+  align-self: start;
+}
+
+.chapter-nav__label {
+  margin: 0 0 20px;
+  font-family: var(--font-pretendard);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--color-text-faint);
+}
+
+.chapter-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chapter-nav__list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.chapter-nav__bar {
+  flex-shrink: 0;
+  width: 3px;
+  height: 22px;
+  border-radius: 1.5px;
+  background: #dbdbdb;
+}
+
+.chapter-nav__list li.is-active .chapter-nav__bar {
+  background: var(--color-primary);
+}
+
+.chapter-nav__list a {
+  text-decoration: none;
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  color: #474747;
+}
+
+.chapter-nav__list li.is-active a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .chapter-nav {
+    display: flex;
+    position: sticky;
+    top: 69px;
+    z-index: 90;
+    min-width: 0;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e8;
+  }
+
+  .chapter-nav__label {
+    display: none;
+  }
+
+  .chapter-nav__list {
+    flex-direction: row;
+    min-width: 0;
+    gap: 22px;
+    overflow-x: auto;
+    /* 가로 스크롤은 유지하고 스크롤바만 숨김 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .chapter-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chapter-nav__list li {
+    flex-shrink: 0;
+    gap: 0;
+  }
+
+  .chapter-nav__bar {
+    display: none;
+  }
+
+  .chapter-nav__list a,
+  .chapter-nav__list button {
+    padding: 14px 0 12px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    color: #57575e;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .chapter-nav__list li.is-active a,
+  .chapter-nav__list li.is-active button {
+    font-weight: 700;
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+}
