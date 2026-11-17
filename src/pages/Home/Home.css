@@ -173,6 +173,8 @@
   grid-template-columns: minmax(0, 2.975fr) minmax(0, 1fr);
   gap: 48px;
   padding-top: 88px;
+  /* 홈의 마지막 영역이라 푸터와의 간격을 여기서 준다. */
+  padding-bottom: 90px;
   align-items: start;
 }
 
@@ -501,6 +503,7 @@
   .home__news {
     grid-template-columns: 1fr;
     padding-top: 32px;
+    padding-bottom: 64px;
   }
 
   .home__quick-links {
