@@ -9,9 +9,11 @@
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  /* 번호·제목·설명 줄을 카드끼리 맞춘다. 제목이 두 줄이 되는 카드가 있어도 설명 시작 위치가 같다. */
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: 12px;
 }
 
 .about__learning-no {
@@ -24,7 +26,8 @@
 .about__learning-card strong {
   font-family: var(--font-pretendard);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
