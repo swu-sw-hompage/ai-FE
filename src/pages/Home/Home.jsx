@@ -147,7 +147,6 @@ const NOTICE_FILTERS = [
   { key: 'all', label: '전체' },
   { key: 'academic', label: '학사' },
   { key: 'employment', label: '취업' },
-  { key: 'club', label: '소학회' },
 ]
 
 export default function Home() {
@@ -164,7 +163,6 @@ export default function Home() {
     getNotices({
       academic: noticeFilter === 'academic' ? true : undefined,
       employment: noticeFilter === 'employment' ? true : undefined,
-      club: noticeFilter === 'club' ? true : undefined,
       page: 0,
       size: HOME_NOTICE_FETCH_SIZE,
     })

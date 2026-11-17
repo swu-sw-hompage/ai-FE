@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom'
 import PageHero from '../../components/common/PageHero'
 import '../../components/common/ChapterNav.css'
 import {
@@ -19,7 +19,6 @@ const FILTERS = [
   { key: 'all', label: '전체' },
   { key: 'academic', label: '학사' },
   { key: 'employment', label: '취업' },
-  { key: 'club', label: '소학회' },
 ]
 
 export default function NoticeDetail() {
@@ -76,11 +75,9 @@ export default function NoticeDetail() {
     ? filterParam
     : notice?.employmentNotice
       ? 'employment'
-      : notice?.clubNotice
-        ? 'club'
-        : notice?.academicNotice
-          ? 'academic'
-          : 'all'
+      : notice?.academicNotice
+        ? 'academic'
+        : 'all'
 
   // 이전/다음글 이동 시에도 같은 분류 상태 유지
   const detailQuery = searchParams.toString() || `filter=${activeFilter}`
@@ -100,7 +97,6 @@ export default function NoticeDetail() {
     getAdjacentNotices(id, {
       academic: activeFilter === 'academic' ? true : undefined,
       employment: activeFilter === 'employment' ? true : undefined,
-      club: activeFilter === 'club' ? true : undefined,
       keyword: keywordParam,
       scope: keywordParam ? scopeParam : undefined,
     })
@@ -138,6 +134,11 @@ export default function NoticeDetail() {
   if (listParams.get('filter') === 'all') listParams.delete('filter')
   const listQuery = listParams.toString()
   const listHref = listQuery ? `/notice?${listQuery}` : '/notice'
+
+  // 소학회 글은 학과 활동 > 소학회에서 보여준다.
+  if (notice?.clubNotice && String(notice.id) === String(id)) {
+    return <Navigate to={`/activities/clubs/${notice.id}`} replace />
+  }
 
   return (
     <div className="notice">

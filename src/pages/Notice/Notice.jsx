@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import PageHero from '../../components/common/PageHero'
 import '../../components/common/ChapterNav.css'
 import { getNotices, noticeCategoryLabel, formatNoticeDate } from '../../api/notice'
@@ -13,7 +13,6 @@ const FILTERS = [
   { key: 'all', label: '전체' },
   { key: 'academic', label: '학사' },
   { key: 'employment', label: '취업' },
-  { key: 'club', label: '소학회' },
 ]
 
 const PAGE_SIZE = 15
@@ -47,7 +46,6 @@ export default function Notice() {
     getNotices({
       academic: filter === 'academic' ? true : undefined,
       employment: filter === 'employment' ? true : undefined,
-      club: filter === 'club' ? true : undefined,
       keyword: submittedKeyword,
       scope: submittedScope,
       page: page - 1,
@@ -97,6 +95,9 @@ export default function Notice() {
     setSearchParams(next)
     document.getElementById('notice-list')?.scrollIntoView({ block: 'start' })
   }
+
+  // 소학회는 학과 활동 아래로 옮겼다. 예전 주소로 들어오면 그쪽으로 보낸다.
+  if (filter === 'club') return <Navigate to="/activities/clubs" replace />
 
   return (
     <div className="notice">

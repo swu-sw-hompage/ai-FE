@@ -40,7 +40,8 @@ const listNotices = ({ academic, employment, club, keyword, page = 0, size = 20 
     (n) =>
       (!academic || n.academicNotice) &&
       (!employment || n.employmentNotice) &&
-      (!club || n.clubNotice) &&
+      // 소학회 글은 학과 활동 > 소학회에서만 보이고, 공지 목록에는 섞이지 않는다.
+      (club ? n.clubNotice : !n.clubNotice) &&
       (!keyword || n.title.includes(keyword) || n.content.includes(keyword)),
   )
   const sorted = [...filtered.filter((n) => n.pinned), ...filtered.filter((n) => !n.pinned)]
@@ -64,6 +65,10 @@ export const mockAdapter = (config) => {
     const notice = NOTICES.find((n) => String(n.id) === noticeId)
     if (!notice) return fail(config, 404, '공지를 찾을 수 없습니다.')
     return Promise.resolve(reply(config, notice))
+  }
+  // 졸업프로젝트·학과 행사는 미리보기에서 빈 목록으로 보여준다.
+  if (url === '/graduation-projects' || url === '/department-events') {
+    return Promise.resolve(reply(config, { content: [], totalPages: 0, totalElements: 0 }))
   }
   if (url === '/hero-slides') return Promise.resolve(reply(config, []))
   return fail(config, 503, '미리보기에서는 사용할 수 없는 기능입니다.')

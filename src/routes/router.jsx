@@ -9,6 +9,12 @@ import Curriculum from '../pages/Curriculum/Curriculum'
 import Roadmap from '../pages/Curriculum/Roadmap'
 import Courses from '../pages/Curriculum/Courses'
 import Faculty from '../pages/Faculty/Faculty'
+import Activities from '../pages/Activities/Activities'
+import ActivityDetail from '../pages/Activities/ActivityDetail'
+import DepartmentEvents from '../pages/Activities/DepartmentEvents'
+import DepartmentEventDetail from '../pages/Activities/DepartmentEventDetail'
+import Clubs from '../pages/Activities/Clubs'
+import ClubDetail from '../pages/Activities/ClubDetail'
 import Notice from '../pages/Notice/Notice'
 import NoticeDetail from '../pages/Notice/NoticeDetail'
 import Login from '../pages/Login/Login'
@@ -24,6 +30,7 @@ import AdminEventList from '../pages/Admin/AdminEventList'
 import EventWrite from '../pages/Admin/EventWrite'
 import DevStats from '../pages/Dev/DevStats'
 import RequireAdmin from './RequireAdmin'
+import { ACTIVITY_LATEST_YEAR } from '../constants/activities'
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +46,13 @@ export const router = createBrowserRouter([
       { path: 'curriculum/courses', element: <Courses /> },
       { path: 'curriculum/roadmap', element: <Roadmap /> },
       { path: 'faculty', element: <Faculty /> },
+      { path: 'activities', element: <Navigate to={`/activities/${ACTIVITY_LATEST_YEAR}`} replace /> },
+      { path: 'activities/events', element: <DepartmentEvents /> },
+      { path: 'activities/events/:id', element: <DepartmentEventDetail /> },
+      { path: 'activities/clubs', element: <Clubs /> },
+      { path: 'activities/clubs/:id', element: <ClubDetail /> },
+      { path: 'activities/:year', element: <Activities /> },
+      { path: 'activities/:year/:id', element: <ActivityDetail /> },
       { path: 'notice', element: <Notice /> },
       { path: 'notice/:id', element: <NoticeDetail /> },
       { path: '*', element: <NotFound /> },

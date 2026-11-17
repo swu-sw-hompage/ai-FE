@@ -1,7 +1,10 @@
+import { ACTIVITY_LATEST_YEAR } from './activities'
+
 export const NAV_ITEMS = [
   { label: '인공지능전공', path: '/about' },
   { label: '교육과정', path: '/curriculum' },
   { label: '교수진', path: '/faculty' },
+  { label: '학과 활동', path: '/activities' },
   { label: '공지사항', path: '/notice' },
 ]
 
@@ -32,13 +35,21 @@ export const MEGA_MENU_COLUMNS = [
     links: [{ to: '/faculty', label: '교수진 소개' }],
   },
   {
+    key: '/activities',
+    title: '학과 활동',
+    links: [
+      { to: `/activities/${ACTIVITY_LATEST_YEAR}`, label: '학생 활동' },
+      { to: '/activities/events', label: '학과 행사' },
+      { to: '/activities/clubs', label: '소학회' },
+    ],
+  },
+  {
     key: '/notice',
     title: '공지사항',
     links: [
       { to: '/notice', label: '전체' },
       { to: '/notice?filter=academic', label: '학사' },
       { to: '/notice?filter=employment', label: '취업' },
-      { to: '/notice?filter=club', label: '소학회' },
     ],
   },
 ]
