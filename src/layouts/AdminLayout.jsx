@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { getAdminEmail, logout } from '../api/auth'
+import { SHOW_GRADUATION_PROJECTS } from '../constants/activities'
 import './AdminLayout.css'
 
 const NAV_ITEMS = [
   { label: '공지사항', to: '/admin/notices' },
-  { label: '졸업프로젝트', to: '/admin/capstone' },
+  ...(SHOW_GRADUATION_PROJECTS ? [{ label: '졸업프로젝트', to: '/admin/capstone' }] : []),
   { label: '학과 행사', to: '/admin/events' },
   { label: '메인 사진', to: '/admin/hero' },
   { label: '알림 신청자', to: '/admin/subscribers' },

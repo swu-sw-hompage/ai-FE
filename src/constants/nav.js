@@ -1,4 +1,4 @@
-import { ACTIVITY_LATEST_YEAR } from './activities'
+import { ACTIVITY_LATEST_YEAR, SHOW_GRADUATION_PROJECTS } from './activities'
 
 export const NAV_ITEMS = [
   { label: '인공지능전공', path: '/about' },
@@ -38,7 +38,7 @@ export const MEGA_MENU_COLUMNS = [
     key: '/activities',
     title: '학과 활동',
     links: [
-      { to: `/activities/${ACTIVITY_LATEST_YEAR}`, label: '학생 활동' },
+      ...(SHOW_GRADUATION_PROJECTS ? [{ to: `/activities/${ACTIVITY_LATEST_YEAR}`, label: '학생 활동' }] : []),
       { to: '/activities/events', label: '학과 행사' },
       { to: '/activities/clubs', label: '소학회' },
     ],
@@ -50,6 +50,7 @@ export const MEGA_MENU_COLUMNS = [
       { to: '/notice', label: '전체' },
       { to: '/notice?filter=academic', label: '학사' },
       { to: '/notice?filter=employment', label: '취업' },
+      { to: '/notice/subscribe', label: '공지 알림 신청' },
     ],
   },
 ]

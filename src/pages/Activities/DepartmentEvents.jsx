@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import PageHero from '../../components/common/PageHero'
 import EmptyState from '../../components/common/EmptyState'
 import ActivitiesSidebar, { ActivitiesMobileTabs } from './ActivitiesSidebar'
-import { ACTIVITY_LATEST_YEAR } from '../../constants/activities'
+import { ACTIVITY_LATEST_YEAR, SHOW_GRADUATION_PROJECTS } from '../../constants/activities'
 import { getDepartmentEvents } from '../../api/event'
 import heroActivities from '../../assets/images/brand/hero-activities.jpg'
 import './Activities.css'
@@ -74,7 +74,11 @@ export default function DepartmentEvents() {
               <EmptyState
                 title="등록된 학과 행사가 없습니다"
                 description="행사 소식이 올라오면 이곳에서 사진과 함께 볼 수 있어요."
-                actions={[{ label: '학생 활동 보기', to: `/activities/${ACTIVITY_LATEST_YEAR}` }]}
+                actions={[
+                  SHOW_GRADUATION_PROJECTS
+                    ? { label: '학생 활동 보기', to: `/activities/${ACTIVITY_LATEST_YEAR}` }
+                    : { label: '소학회 보기', to: '/activities/clubs' },
+                ]}
               />
             ) : (
               <ol className="devents__timeline">

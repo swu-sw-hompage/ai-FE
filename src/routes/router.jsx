@@ -17,6 +17,7 @@ import Clubs from '../pages/Activities/Clubs'
 import ClubDetail from '../pages/Activities/ClubDetail'
 import Notice from '../pages/Notice/Notice'
 import NoticeDetail from '../pages/Notice/NoticeDetail'
+import NoticeSubscribe from '../pages/Notice/NoticeSubscribe'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
 import AdminAccounts from '../pages/Admin/AdminAccounts'
@@ -30,7 +31,7 @@ import AdminEventList from '../pages/Admin/AdminEventList'
 import EventWrite from '../pages/Admin/EventWrite'
 import DevStats from '../pages/Dev/DevStats'
 import RequireAdmin from './RequireAdmin'
-import { ACTIVITY_LATEST_YEAR } from '../constants/activities'
+import { ACTIVITIES_HOME, SHOW_GRADUATION_PROJECTS } from '../constants/activities'
 
 export const router = createBrowserRouter([
   {
@@ -46,14 +47,16 @@ export const router = createBrowserRouter([
       { path: 'curriculum/courses', element: <Courses /> },
       { path: 'curriculum/roadmap', element: <Roadmap /> },
       { path: 'faculty', element: <Faculty /> },
-      { path: 'activities', element: <Navigate to={`/activities/${ACTIVITY_LATEST_YEAR}`} replace /> },
+      { path: 'activities', element: <Navigate to={ACTIVITIES_HOME} replace /> },
       { path: 'activities/events', element: <DepartmentEvents /> },
       { path: 'activities/events/:id', element: <DepartmentEventDetail /> },
       { path: 'activities/clubs', element: <Clubs /> },
       { path: 'activities/clubs/:id', element: <ClubDetail /> },
-      { path: 'activities/:year', element: <Activities /> },
-      { path: 'activities/:year/:id', element: <ActivityDetail /> },
+      // 졸업프로젝트를 숨기는 동안 연도 주소로 들어오면 학과 활동 첫 화면으로 보낸다.
+      { path: 'activities/:year', element: SHOW_GRADUATION_PROJECTS ? <Activities /> : <Navigate to={ACTIVITIES_HOME} replace /> },
+      { path: 'activities/:year/:id', element: SHOW_GRADUATION_PROJECTS ? <ActivityDetail /> : <Navigate to={ACTIVITIES_HOME} replace /> },
       { path: 'notice', element: <Notice /> },
+      { path: 'notice/subscribe', element: <NoticeSubscribe /> },
       { path: 'notice/:id', element: <NoticeDetail /> },
       { path: '*', element: <NotFound /> },
     ],

@@ -35,7 +35,7 @@ VITE_USE_MOCK=true npm run dev
 - 메인 문구와 사진 (시안에 없어 임시로 만듦)
 - 로드맵 탭과 트랙의 대응: AI·데이터 플랫폼 = AI 시스템 엔지니어, AI 가드레일 설계 = AI 안전 분석가
 - 교육과정·교수진·학과 활동·공지사항 배너는 소프트웨어학과 사진 그대로
-- 학과 활동(학생 활동·학과 행사·소학회)은 소프트웨어학과 구조 그대로 넣음. 졸업프로젝트 연도(2020~2025)와 `src/constants/activities.js`의 주소는 소프트웨어학과 값이라 인공지능전공에 맞게 정해야 함
+- 학과 활동은 소프트웨어학과 구조 그대로 넣되, 졸업프로젝트(학생 활동)는 첫 졸업생이 나올 때까지(약 4년) 숨김. 메뉴는 학과 행사·소학회만 보인다. 공개할 때 `src/constants/activities.js`의 `SHOW_GRADUATION_PROJECTS`를 true로 바꾸고 연도·주소(지금은 소프트웨어학과 값)를 맞춘다
 
 ## 미확인
 
@@ -47,5 +47,8 @@ VITE_USE_MOCK=true npm run dev
 
 - 저장소: `swu-sw-hompage/ai-FE` (비공개, 기본 브랜치 `main`, 작업은 `develop`). 조직·기존 레포 이름은 바꾸지 않기로 했고, 나중에 조직을 나누면 Transfer repository로 옮긴다.
 - 새 Vercel 프로젝트로 미리보기 배포. 사용자 확인 후 진행한다.
-- 백엔드 복제 시: 소학회 분류 추가(`clubNotice`, `/notices`의 `club` 파라미터, 프론트는 이미 사용 중. 소학회 글은 학과 활동 > 소학회(`/activities/clubs`)에서만 보여주므로 `club` 없이 조회하면 소학회 글이 빠져야 한다), 공지 작성 화면에 소학회 추가, 관리자 화면의 졸업작품·행사·알림 구독 메뉴와 `src/constants/activities.js` 정리.
+- 백엔드 복제 시: 소학회 분류 추가(`clubNotice`, `/notices`의 `club` 파라미터, 프론트는 이미 사용 중. 소학회 글은 학과 활동 > 소학회(`/activities/clubs`)에서만 보여주므로 `club` 없이 조회하면 소학회 글이 빠져야 한다), 공지 작성·관리 화면의 소학회는 프론트에 넣어 둠(`clubNotice`를 보내고 관리 목록은 `/admin/notices`에 `club` 파라미터를 씀), 관리자 화면의 행사 메뉴 정리.
 - 운영 준비 시: 새 저장소는 이력 없이 시작하고, 배포 대상과 비밀값(JWT_SECRET, STATS_ACCESS_KEY, 관리자·DB 비밀번호)은 전부 새로 만든다. 도메인 A 레코드와 학과 메일 계정은 학교에 요청한다.
+- 미리보기(샘플 모드) 관리자 로그인: `src/api/mock.js`의 `PREVIEW_ADMIN`. 화면 확인용이라 저장은 안 되고, 값이 배포 JS에 보이므로 운영 비밀번호와 다르게 둔다.
+- 공지 알림 신청: 소프트웨어학과와 같게 넣고 `SUBSCRIBE_READY = false`로 막아 둠(`src/pages/Notice/NoticeSubscribe.jsx`). 인공지능학부 웹메일로 백엔드 메일 발송을 설정하면 true로 바꾼다.
+- 관리자 계정: `ai@swu.ac.kr`. 백엔드 첫 실행 때 환경변수 `ADMIN_BOOTSTRAP_EMAIL`·`ADMIN_BOOTSTRAP_PASSWORD`로 만들어진다(관리자가 하나도 없을 때만). 비밀번호는 사용자가 직접 정해서 넣는다. 관리자 화면에는 계정을 추가하는 기능이 없다.
