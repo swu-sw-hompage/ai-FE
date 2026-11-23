@@ -5,7 +5,7 @@ import EmptyState from '../../components/common/EmptyState'
 import ActivitiesSidebar, { ActivitiesMobileTabs } from './ActivitiesSidebar'
 import { ACTIVITY_LATEST_YEAR, SHOW_GRADUATION_PROJECTS } from '../../constants/activities'
 import { getDepartmentEvents } from '../../api/event'
-import heroActivities from '../../assets/images/brand/hero-activities.jpg'
+import heroActivities from '../../assets/images/brand/hero-faculty-lounge.jpg'
 import './Activities.css'
 import './DepartmentEvents.css'
 

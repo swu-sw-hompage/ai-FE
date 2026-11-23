@@ -4,7 +4,7 @@ import PageHero from '../../components/common/PageHero'
 import { getGraduationProjects } from '../../api/graduation'
 import { ACTIVITY_LATEST_YEAR, ACTIVITY_YEARS } from '../../constants/activities'
 import ActivitiesSidebar, { ActivitiesMobileTabs } from './ActivitiesSidebar'
-import heroActivities from '../../assets/images/brand/hero-activities.jpg'
+import heroActivities from '../../assets/images/brand/hero-faculty-lounge.jpg'
 import './Activities.css'
 import { getPageWindow } from '../../utils/pagination'
 

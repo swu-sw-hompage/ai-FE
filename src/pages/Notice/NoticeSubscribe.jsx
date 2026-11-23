@@ -4,7 +4,7 @@ import PageHero from '../../components/common/PageHero'
 import '../../components/common/ChapterNav.css'
 import { requestVerificationCode, verifyCode, subscribe, unsubscribe } from '../../api/notification'
 import { trackSubscribePageView } from '../../api/analytics'
-import heroNotice from '../../assets/images/brand/hero-faculty.jpg'
+import heroNotice from '../../assets/images/brand/hero-photo.jpg'
 import './NoticeSubscribe.css'
 
 // 메일(SMTP) 발송 설정이 끝나기 전까지 신청 폼을 막고 안내 문구를 덮어 둔다.

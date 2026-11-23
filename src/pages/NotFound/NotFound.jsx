@@ -3,9 +3,10 @@ import EmptyState from '../../components/common/EmptyState'
 import './NotFound.css'
 
 const SHORTCUTS = [
-  { to: '/about', label: '학과 소개', desc: '학과 개요와 연혁, 졸업 후 진로' },
-  { to: '/curriculum', label: '교육과정', desc: '교육과정, 전공로드맵, 졸업 요건' },
+  { to: '/about', label: '학과 소개', desc: '학과 특징, 교육 목표 및 인재상, 찾아오시는 길' },
+  { to: '/curriculum', label: '교육과정', desc: '교육과정, 학년별 교과목, 전공로드맵' },
   { to: '/faculty', label: '교수진', desc: '교수님 소개와 연구 분야' },
+  { to: '/activities', label: '학과 활동', desc: '학과 행사와 소학회' },
   { to: '/notice', label: '공지사항', desc: '학사·취업 공지와 알림 신청' },
 ]
 

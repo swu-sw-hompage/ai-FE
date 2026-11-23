@@ -4,7 +4,7 @@ import PageHero from '../../components/common/PageHero'
 import EmptyState from '../../components/common/EmptyState'
 import ActivitiesSidebar, { ActivitiesMobileTabs } from './ActivitiesSidebar'
 import { getDepartmentEventById, formatEventDate } from '../../api/event'
-import heroActivities from '../../assets/images/brand/hero-activities.jpg'
+import heroActivities from '../../assets/images/brand/hero-faculty-lounge.jpg'
 import './Activities.css'
 import './DepartmentEvents.css'
 

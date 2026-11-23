@@ -3,6 +3,8 @@ import heroAbout from '../../assets/images/brand/hero-about.jpg'
 import majorCompetency from '../../assets/images/content/major-competency.png'
 import ChapterNav from '../../components/common/ChapterNav'
 import { ABOUT_SECTIONS } from '../../constants/aboutNav'
+import { MAJOR_COMPETENCIES } from '../../data/aboutFigures'
+import '../../components/common/FigureText.css'
 import './About.css'
 
 const LEARNING_CARDS = [
@@ -48,10 +50,31 @@ export default function About() {
           <section className="page-section">
             <h2>전공 능력</h2>
             <img
-              className="about__figure"
+              className="about__figure figure-text-img"
               src={majorCompetency}
               alt="인공지능전공 전공능력: AI 핵심기술 이해·평가 능력, AI+X 융합 문제해결 능력, AI 시스템 전주기 개발 능력, AI 윤리·신뢰성 실천 능력, 자기주도 성장·협업 능력"
             />
+            <div className="figure-text">
+              {MAJOR_COMPETENCIES.map((c) => (
+                <article className="competency" key={c.no} style={{ '--c': c.color, '--c-bg': c.bg }}>
+                  <div className="competency__head">
+                    <span className="competency__no">{c.no}</span>
+                    <strong className="competency__title">{c.title}</strong>
+                  </div>
+                  <div className="competency__body">
+                    <p className="competency__desc">{c.desc}</p>
+                    <ul className="competency__items">
+                      {c.items.map(([tag, text]) => (
+                        <li key={tag}>
+                          <span className="competency__tag">{tag}</span>
+                          <span>{text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
         </main>
       </div>

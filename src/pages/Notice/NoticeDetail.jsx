@@ -11,7 +11,7 @@ import {
 } from '../../api/notice'
 import EmptyState from '../../components/common/EmptyState'
 import MarkdownLite from '../../components/common/MarkdownLite'
-import heroNotice from '../../assets/images/brand/hero-faculty.jpg'
+import heroNotice from '../../assets/images/brand/hero-photo.jpg'
 import './Notice.css'
 import './NoticeDetail.css'
 
