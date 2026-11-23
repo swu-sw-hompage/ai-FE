@@ -1,7 +1,6 @@
 export const ABOUT_SECTIONS = [
   { to: '/about', label: '학과 소개' },
   { to: '/about/education-goals', label: '교육 목표 및 인재상' },
-  { to: '/about/greeting', label: '학과장 인사말' },
   { to: '/about/location', label: '찾아오시는 길' },
 ]
 
