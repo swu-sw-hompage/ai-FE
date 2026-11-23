@@ -106,46 +106,6 @@
   color: var(--color-text-faint);
 }
 
-.roadmap__tooltip {
-  position: absolute;
-  left: calc(100% + 10px);
-  top: 0;
-  z-index: 5;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  width: 230px;
-  padding: 14px;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-.roadmap__tooltip strong {
-  font-family: var(--font-pretendard);
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--color-primary);
-}
-
-.roadmap__tooltip p {
-  margin: 0;
-  font-family: var(--font-pretendard);
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-text-faint);
-}
-
-.roadmap__course:hover .roadmap__tooltip {
-  display: flex;
-}
-
-.roadmap__course--flip .roadmap__tooltip {
-  left: auto;
-  right: calc(100% + 10px);
-}
-
 /* 함께 들으면 좋은 교양 */
 .roadmap__liberal {
   display: grid;
@@ -183,20 +143,6 @@
   color: var(--color-primary);
 }
 
-.roadmap__tooltip--liberal {
-  top: auto;
-  align-self: center;
-}
-
-.roadmap__liberal-item:hover .roadmap__tooltip--liberal {
-  display: flex;
-}
-
-.roadmap__liberal-item--flip .roadmap__tooltip--liberal {
-  left: auto;
-  right: calc(100% + 10px);
-}
-
 .roadmap__mobile-roadmap,
 .roadmap__mobile-liberal-wrap {
   display: none;
@@ -209,10 +155,6 @@
 
   .roadmap .page-section h2 {
     margin-bottom: 20px;
-  }
-
-  .roadmap__tooltip {
-    display: none !important;
   }
 
   .roadmap__years,
