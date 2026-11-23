@@ -121,9 +121,9 @@ function MobileCourseItem({ course, expanded, onToggle }) {
   )
 }
 
-function CourseItem({ course, flip }) {
+function CourseItem({ course }) {
   return (
-    <div className={flip ? 'roadmap__course roadmap__course--flip' : 'roadmap__course'}>
+    <div className="roadmap__course">
       <span
         className={
           course.tag === '필수'
@@ -146,10 +146,6 @@ function CourseItem({ course, flip }) {
         >
           {course.tag}
         </span>
-      </div>
-      <div className="roadmap__tooltip">
-        <strong>{course.title}</strong>
-        <p>{course.desc}</p>
       </div>
     </div>
   )
@@ -222,7 +218,7 @@ export default function Roadmap() {
               {displayYears.map((y) => (
                 <div className="roadmap__semester" key={y.year}>
                   {y.courses.map((course) => (
-                    <CourseItem course={course} flip={y.no === '04'} key={course.title} />
+                    <CourseItem course={course} key={course.title} />
                   ))}
                 </div>
               ))}
