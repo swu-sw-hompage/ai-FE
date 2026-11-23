@@ -50,7 +50,7 @@ export default function NoticeWrite() {
         if (cancelled || !notice) return
         setTitle(notice.title ?? '')
         setBody(notice.content ?? '')
-        setCategory(notice.employmentNotice ? 'career' : 'academic')
+        setCategory(notice.clubNotice ? 'club' : notice.employmentNotice ? 'career' : 'academic')
         setPinned(Boolean(notice.pinned))
         setCreatedAt(notice.createdAt ?? null)
         setAttachments(notice.attachments ?? [])
@@ -172,6 +172,8 @@ export default function NoticeWrite() {
         content: body,
         academicNotice: category === 'academic',
         employmentNotice: category === 'career',
+        // 소학회 글은 학과 활동 > 소학회에 보인다 (공지 목록에는 안 나옴)
+        clubNotice: category === 'club',
         // 백엔드는 값이 없으면 고정 해제로 저장하므로 수정 시에도 항상 보낸다.
         pinned,
         attachments,
@@ -246,6 +248,7 @@ export default function NoticeWrite() {
               <select value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="academic">학사</option>
                 <option value="career">취업</option>
+                <option value="club">소학회</option>
               </select>
             </label>
             <div className="admin-field admin-field--xs">

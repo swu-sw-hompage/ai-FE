@@ -59,9 +59,9 @@ export const getAdjacentNotices = async (id, { academic, employment, club, keywo
 
 // 관리자 전용 (JWT 필요)
 // status: 'PUBLISHED'(기본) | 'DRAFT'. 임시저장 글은 최근 수정순으로 내려온다.
-export const getAdminNotices = ({ status, academic, employment, keyword, page = 0, size = 10 } = {}) =>
+export const getAdminNotices = ({ status, academic, employment, club, keyword, page = 0, size = 10 } = {}) =>
   apiClient.get('/admin/notices', {
-    params: { status, academic, employment, keyword: keyword || undefined, page, size },
+    params: { status, academic, employment, club, keyword: keyword || undefined, page, size },
   })
 
 // 임시저장 글도 포함해서 한 건 조회 (공지 수정 화면용)

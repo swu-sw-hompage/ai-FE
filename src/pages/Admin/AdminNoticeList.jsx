@@ -17,6 +17,7 @@ const FILTERS = [
   { key: 'all', label: '전체' },
   { key: 'academic', label: '학사' },
   { key: 'employment', label: '취업' },
+  { key: 'club', label: '소학회' },
   { key: 'draft', label: '임시저장' },
 ]
 
@@ -43,11 +44,12 @@ export default function AdminNoticeList() {
     let cancelled = false
     setLoading(true)
     setError('')
-    // 전체/학사/취업은 게시된 공지, 임시저장 탭은 아직 게시하지 않은 글(최근 수정순)을 보여준다.
+    // 전체/학사/취업/소학회는 게시된 공지, 임시저장 탭은 아직 게시하지 않은 글(최근 수정순)을 보여준다.
     getAdminNotices({
       status: isDraftTab ? 'DRAFT' : 'PUBLISHED',
       academic: filter === 'academic' ? true : undefined,
       employment: filter === 'employment' ? true : undefined,
+      club: filter === 'club' ? true : undefined,
       keyword: submittedKeyword,
       page: page - 1,
       size: PAGE_SIZE,

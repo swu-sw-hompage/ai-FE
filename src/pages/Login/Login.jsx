@@ -96,7 +96,7 @@ export default function Login() {
         </div>
       </div>
 
-      <p className="admin-login__footer">© 2026 Seoul Women's University Department of Computer Science &amp; Engineering</p>
+      <p className="admin-login__footer">© {new Date().getFullYear()} Seoul Women&apos;s University Major in Artificial Intelligence</p>
     </div>
   )
 }
