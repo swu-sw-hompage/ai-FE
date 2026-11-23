@@ -18,15 +18,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect GitHub OIDC claims
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" |
-            jq -er '.value' |
-            node -e 'let t="";process.stdin.on("data",d=>t+=d).on("end",()=>{const c=JSON.parse(Buffer.from(t.split(".")[1],"base64url").toString()); console.log(JSON.stringify({iss:c.iss,aud:c.aud,sub:c.sub}));});'
-
       - name: Configure temporary AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
