@@ -115,6 +115,10 @@ export default function Notice() {
                 </button>
               </li>
             ))}
+            <li>
+              <span className="chapter-nav__bar" />
+              <Link to="/notice/subscribe">공지 알림 신청</Link>
+            </li>
           </ul>
         </nav>
 

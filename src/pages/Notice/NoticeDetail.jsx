@@ -154,6 +154,10 @@ export default function NoticeDetail() {
                 <Link to={f.key === 'all' ? '/notice' : `/notice?filter=${f.key}`}>{f.label}</Link>
               </li>
             ))}
+            <li>
+              <span className="chapter-nav__bar" />
+              <Link to="/notice/subscribe">공지 알림 신청</Link>
+            </li>
           </ul>
         </nav>
 
@@ -169,6 +173,7 @@ export default function NoticeDetail() {
                 description="삭제되었거나 주소가 바뀌었을 수 있어요. 목록에서 다시 찾아봐 주세요."
                 actions={[
                   { label: '목록으로 돌아가기', to: listHref },
+                  { label: '공지 알림 신청', to: '/notice/subscribe' },
                 ]}
               />
             )}
